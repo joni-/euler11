@@ -1,6 +1,6 @@
 import unittest
 
-from euler11 import get_number_combinations, parse_line
+from euler11 import get_number_combinations, max_product_for_line, parse_line
 
 
 class ParsingTests(unittest.TestCase):
@@ -15,6 +15,10 @@ class ParsingTests(unittest.TestCase):
             get_number_combinations("1 2 3 4 5", 4),
             [[1, 2, 3, 4], [2, 3, 4, 5]]
         )
+
+    def test_max_product_of_single_line(self):
+        self.assertEqual(max_product_for_line("1 2 3 4", 4), 24)
+        self.assertEqual(max_product_for_line("1 2 3 4 5", 4), 120)
 
 
 if __name__ == "__main__":

@@ -17,3 +17,15 @@ def get_number_combinations(line, n):
         start += 1
         end += 1
     return result
+
+
+def max_product_for_line(line, n):
+    """ Parses given line into lists of numbers of length n, multiplies the
+    numbers in each list together and returns the maximum product. """
+    products = []
+    for numbers in get_number_combinations(line, n):
+        result = 1
+        for n in numbers:
+            result *= n
+        products.append(result)
+    return max(products)
