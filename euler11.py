@@ -34,3 +34,15 @@ def max_product_for_line(line, n):
 def parse_rows(grid):
     """ Parses the grid and returns rows as a list of lists of ints. """
     return [parse_line(line) for line in grid.splitlines()]
+
+
+def parse_columns(grid):
+    """ Parses the grid and returns columns as a list of lists of ints. """
+    columns = []
+    rows = parse_rows(grid)
+    for column in range(len(rows)):
+        col_numbers = []
+        for row in range(len(rows)):
+            col_numbers.append(rows[row][column])
+        columns.append(col_numbers)
+    return columns

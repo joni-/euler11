@@ -1,7 +1,8 @@
 import unittest
 
 from euler11 import (
-    get_number_combinations, max_product_for_line, parse_line, parse_rows
+    get_number_combinations, max_product_for_line,
+    parse_columns, parse_line, parse_rows
 )
 
 
@@ -27,6 +28,15 @@ class ParsingTests(unittest.TestCase):
                "4 5 6\n" + \
                "7 8 9"
         self.assertEqual(parse_rows(grid), [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+    def test_parse_columns_from_grid(self):
+        grid = "1 2 3\n" + \
+               "4 5 6\n" + \
+               "7 8 9"
+        self.assertEqual(
+            parse_columns(grid),
+            [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+        )
 
 
 if __name__ == "__main__":
