@@ -2,7 +2,7 @@ import unittest
 
 from euler11 import (
     get_number_combinations, max_product_for_line,
-    parse_columns, parse_diagonal_lines, parse_line, parse_rows
+    parse_columns, parse_diagonal_lines, parse_grid, parse_line, parse_rows
 )
 
 
@@ -44,6 +44,16 @@ class ParsingTests(unittest.TestCase):
         self.assertEqual(
             parse_diagonal_lines(self.grid),
             [[1, 5, 9], [3, 5, 7]]
+        )
+
+    def test_parse_grid(self):
+        self.assertEqual(
+            parse_grid(self.grid),
+            [
+                [1, 2, 3], [4, 5, 6], [7, 8, 9],  # rows
+                [1, 4, 7], [2, 5, 8], [3, 6, 9],  # columns
+                [1, 5, 9], [3, 5, 7]  # diagonals
+            ]
         )
 
 

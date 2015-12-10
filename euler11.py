@@ -68,3 +68,7 @@ def parse_diagonal_lines(grid):
         column -= 1
 
     return [from_topleft, from_topright]
+
+
+def parse_grid(grid):
+    return parse_rows(grid) + parse_columns(grid) + parse_diagonal_lines(grid)
