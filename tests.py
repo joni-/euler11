@@ -45,13 +45,17 @@ class ParsingTests(unittest.TestCase):
 
     def test_parse_diagonal_lines_from_grid(self):
         self.assertEqual(
-            parse_diagonal_lines(self.grid),
+            parse_diagonal_lines(self.grid, 2),
+            [[2, 6], [1, 5, 9], [4, 8], [2, 4], [3, 5, 7], [6, 8]]
+        )
+        self.assertEqual(
+            parse_diagonal_lines(self.grid, 3),
             [[1, 5, 9], [3, 5, 7]]
         )
 
     def test_parse_grid(self):
         self.assertEqual(
-            parse_grid(self.grid),
+            parse_grid(self.grid, 3),
             [
                 [1, 2, 3], [4, 5, 6], [7, 8, 9],  # rows
                 [1, 4, 7], [2, 5, 8], [3, 6, 9],  # columns

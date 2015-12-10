@@ -50,35 +50,49 @@ def parse_columns(grid):
     return columns
 
 
-def parse_diagonal_lines(grid):
+def parse_diagonal_lines(grid, n):
     """ Parses the grid and returns diagonal lines as a list of lists of ints.
-    """
+        Returns only lists that contains atleast n items. """
+
+    # Implementation taken from
+    # http://analgorithmaday.blogspot.fi/2011/04/traverse-array-diagonally.html
     rows = parse_rows(grid)
 
-    # top left to bottom right
-    from_topleft = []
-    column = 0
-    for row in rows:
-        from_topleft.append(row[column])
-        column += 1
+    # Top right to bottom left
+    right_to_left = []
+    for slice_ in range(len(rows)*2-1):
+        z = 0 if slice_ < len(rows) else slice_ - len(rows) + 1
+        result = []
+        for j in range(z, slice_-z+1):
+            row = j
+            column = (len(rows) - 1) - (slice_ - j)
+            result.append(rows[row][column])
+        if len(result) >= n:
+            right_to_left.append(result)
 
-    # top right to bottom left
-    from_topright = []
-    column = len(rows) - 1
-    for row in rows:
-        from_topright.append(row[column])
-        column -= 1
+    # Top left to bottom right
+    left_to_right = []
+    for slice_ in range(len(rows)*2-1):
+        z = 0 if slice_ < len(rows) else slice_ - len(rows) + 1
+        result = []
+        for j in range(z, slice_-z+1):
+            row = j
+            column = slice_ - j
+            result.append(rows[row][column])
+        if len(result) >= n:
+            left_to_right.append(result)
 
-    return [from_topleft, from_topright]
+    return right_to_left + left_to_right
 
 
-def parse_grid(grid):
-    return parse_rows(grid) + parse_columns(grid) + parse_diagonal_lines(grid)
+def parse_grid(grid, n):
+    return parse_rows(grid) + parse_columns(grid) + \
+           parse_diagonal_lines(grid, n)
 
 
 def max_product(grid, n):
     """ Returns max product of n adjacent numbers from the grid. """
-    lines = parse_grid(grid)
+    lines = parse_grid(grid, n)
     products = []
     for line in lines:
         products.append(max_product_for_numbers(line, n))
