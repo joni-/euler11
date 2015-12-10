@@ -1,7 +1,7 @@
 import unittest
 
 from euler11 import (
-    get_number_combinations, max_product_for_numbers,
+    get_number_combinations, max_product, max_product_for_numbers,
     parse_columns, parse_diagonal_lines, parse_grid, parse_line, parse_rows
 )
 
@@ -59,6 +59,26 @@ class ParsingTests(unittest.TestCase):
             ]
         )
 
+    def test_grid_max_product(self):
+        grid1 = "9 1 1 1 1\n" + \
+                "1 9 1 1 1\n" + \
+                "1 1 9 1 1\n" + \
+                "1 1 1 9 1\n" + \
+                "1 1 1 9 9"
+
+        grid2 = "0 0\n" + \
+                "0 0"
+
+        self.assertEqual(max_product(self.grid, 1), 9)
+        self.assertEqual(max_product(self.grid, 2), 72)
+        self.assertEqual(max_product(self.grid, 3), 504)
+        self.assertEqual(max_product(grid1, 1), 9)
+        self.assertEqual(max_product(grid1, 2), 81)
+        self.assertEqual(max_product(grid1, 3), 729)
+        self.assertEqual(max_product(grid1, 4), 6561)
+        self.assertEqual(max_product(grid1, 5), 59049)
+        self.assertEqual(max_product(grid2, 1), 0)
+        self.assertEqual(max_product(grid2, 2), 0)
 
 if __name__ == "__main__":
     unittest.main()

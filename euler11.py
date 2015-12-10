@@ -71,3 +71,12 @@ def parse_diagonal_lines(grid):
 
 def parse_grid(grid):
     return parse_rows(grid) + parse_columns(grid) + parse_diagonal_lines(grid)
+
+
+def max_product(grid, n):
+    """ Returns max product of n adjacent numbers from the grid. """
+    lines = parse_grid(grid)
+    products = []
+    for line in lines:
+        products.append(max_product_for_numbers(line, n))
+    return max(products)
