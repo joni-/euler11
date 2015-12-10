@@ -16,4 +16,5 @@ Running the app
 
 * Clone the repo (`git clone https://github.com/joni-/euler11.git)`) or just copy the `euler11.py` to your computer.
 * Run the app and give a file containing the grid as a parameter (`python3 euler11.py input`).
+    * Optionally pass the number of adjacent numbers as second argument 
 * The app prints the solution for the problem into console

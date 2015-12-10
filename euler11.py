@@ -86,12 +86,17 @@ def max_product(grid, n):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: {} filename".format(sys.argv[0]))
+    if len(sys.argv) < 2:
+        print("Usage: {} filename [n]".format(sys.argv[0]))
         sys.exit()
 
     filename = sys.argv[1]
     n = 4
+    if len(sys.argv) > 2:
+        try:
+            n = int(sys.argv[2])
+        except ValueError:
+            n = 4
 
     with open(filename) as f:
         grid = f.read()
