@@ -1,3 +1,6 @@
+import sys
+
+
 def parse_line(line):
     """ Parses given line into list of numbers.
     e.g. '1 2 3 4' => [1, 2, 3, 4] """
@@ -80,3 +83,16 @@ def max_product(grid, n):
     for line in lines:
         products.append(max_product_for_numbers(line, n))
     return max(products)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: {} filename".format(sys.argv[0]))
+        sys.exit()
+
+    filename = sys.argv[1]
+    n = 4
+
+    with open(filename) as f:
+        grid = f.read()
+    print(max_product(grid, n))
