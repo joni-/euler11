@@ -46,3 +46,25 @@ def parse_columns(grid):
             col_numbers.append(rows[row][column])
         columns.append(col_numbers)
     return columns
+
+
+def parse_diagonal_lines(grid):
+    """ Parses the grid and returns diagonal lines as a list of lists of ints.
+    """
+    rows = parse_rows(grid)
+
+    # top left to bottom right
+    from_topleft = []
+    column = 0
+    for row in rows:
+        from_topleft.append(row[column])
+        column += 1
+
+    # top right to bottom left
+    from_topright = []
+    column = len(rows) - 1
+    for row in rows:
+        from_topright.append(row[column])
+        column -= 1
+
+    return [from_topleft, from_topright]
