@@ -4,11 +4,10 @@ def parse_line(line):
     return [int(num) for num in line.split()]
 
 
-def get_number_combinations(line, n):
-    """ Parses given line into lists of numbers of length n and returns them as
-    a list.
-    e.g. line: '1 2 3 4 5', n: 4 => [[1, 2, 3, 4], [2, 3, 4, 5]] """
-    numbers = parse_line(line)
+def get_number_combinations(numbers, n):
+    """ Returns a list of lists of ints of length n from the given list of
+    ints such that each n length list contains adjacent numbers.
+    e.g. numbers: [1, 2, 3, 4, 5], n: 4 => [[1, 2, 3, 4], [2, 3, 4, 5]] """
     result = []
     start = 0
     end = n
@@ -19,14 +18,14 @@ def get_number_combinations(line, n):
     return result
 
 
-def max_product_for_line(line, n):
-    """ Parses given line into lists of numbers of length n, multiplies the
-    numbers in each list together and returns the maximum product. """
+def max_product_for_numbers(numbers, n):
+    """ Returns max product for n adjacent numbers in the given list of numbers.
+    """
     products = []
-    for numbers in get_number_combinations(line, n):
+    for numbers in get_number_combinations(numbers, n):
         result = 1
-        for n in numbers:
-            result *= n
+        for num in numbers:
+            result *= num
         products.append(result)
     return max(products)
 
