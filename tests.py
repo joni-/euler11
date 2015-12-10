@@ -1,6 +1,8 @@
 import unittest
 
-from euler11 import get_number_combinations, max_product_for_line, parse_line
+from euler11 import (
+    get_number_combinations, max_product_for_line, parse_line, parse_rows
+)
 
 
 class ParsingTests(unittest.TestCase):
@@ -19,6 +21,12 @@ class ParsingTests(unittest.TestCase):
     def test_max_product_of_single_line(self):
         self.assertEqual(max_product_for_line("1 2 3 4", 4), 24)
         self.assertEqual(max_product_for_line("1 2 3 4 5", 4), 120)
+
+    def test_parse_rows_from_grid(self):
+        grid = "1 2 3\n" + \
+               "4 5 6\n" + \
+               "7 8 9"
+        self.assertEqual(parse_rows(grid), [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 
 
 if __name__ == "__main__":

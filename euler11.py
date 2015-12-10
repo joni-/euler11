@@ -29,3 +29,8 @@ def max_product_for_line(line, n):
             result *= n
         products.append(result)
     return max(products)
+
+
+def parse_rows(grid):
+    """ Parses the grid and returns rows as a list of lists of ints. """
+    return [parse_line(line) for line in grid.splitlines()]
